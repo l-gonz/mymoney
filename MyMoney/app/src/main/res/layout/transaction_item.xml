@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transaction_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin_small"
+    android:paddingLeft="@dimen/margin_medium"
+    android:paddingRight="@dimen/margin_medium" >
+
+    <TextView
+        android:id="@+id/date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12/04/17"/>
+
+    <TextView
+        android:id="@+id/concept_text_view"
+        android:layout_width="@dimen/concept_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_text_view"
+        android:textStyle="bold"
+        android:textSize="@dimen/fontsize_medium"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="Esta es la compra que hizo mi abuela"/>
+
+    <TextView
+        android:id="@+id/quantity_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold"
+        android:textSize="@dimen/fontsize_medium"
+        tools:text="12.45 €"/>
+
+    <TextView
+        android:id="@+id/total_after_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/quantity_text_view"
+        tools:text="1567.34"/>
+
+</RelativeLayout>

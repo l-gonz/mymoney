@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TransactionActivity"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/margin_small">
+
+        <EditText
+            android:id="@+id/transaction_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="48dp"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:hint="@string/transaction_date"
+            style="@style/EditorFieldStyle"/>
+
+        <EditText
+            android:id="@+id/transaction_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/margin_small"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:hint="@string/transaction_time"
+            style="@style/EditorFieldStyle"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/transaction_concept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:hint="@string/transaction_concept"
+        android:inputType="textCapSentences"
+        style="@style/EditorFieldStyle"/>
+
+    <EditText
+        android:id="@+id/transaction_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:hint="@string/transaction_place"
+        android:inputType="textCapWords"
+        style="@style/EditorFieldStyle"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small">
+
+        <EditText
+            android:id="@+id/transaction_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/margin_small"
+            android:hint="@string/transaction_amount"
+            android:inputType="numberDecimal"
+            style="@style/EditorFieldStyle"/>
+
+        <TextView
+            android:id="@+id/transaction_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text=" €"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_receipt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:drawableStart="@drawable/ic_add_photo"
+        android:drawablePadding="@dimen/margin_extra_small"
+        android:text="@string/add_receipt"/>
+
+
+</LinearLayout>

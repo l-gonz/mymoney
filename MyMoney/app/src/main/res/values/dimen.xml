@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_extra_small">8dp</dimen>
+    <dimen name="margin_small">16dp</dimen>
+    <dimen name="margin_medium">32dp</dimen>
+
+    <dimen name="fontsize_medium">20sp</dimen>
+
+    <dimen name="concept_width">250dp</dimen>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- These are the options displayed in the type drop-down Spinner -->
+    <string-array name="array_type_options">
+        <item>@string/type_cash</item>
+        <item>@string/type_bank</item>
+    </string-array>
+
+    <string-array name="array_currency_options">
+        <item>@string/eur</item>
+        <item>@string/gbp</item>
+        <item>@string/nok</item>
+        <item>@string/tur</item>
+    </string-array>
+</resources>

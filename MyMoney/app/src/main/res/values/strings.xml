@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">MyMoney</string>
+
+    <!-- Menu items names -->
+    <string name="action_save">Guardar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_edit">Editar</string>
+
+    <!-- MainActivity -->
+    <string name="total_money">Total disponible: </string>
+    <string name="empty_purses">No hay monederos</string>
+
+    <!-- PurseContract Nombres de divisas -->
+    <string name="eur">EUR</string>
+    <string name="gbp">GBP</string>
+    <string name="nok">NOK</string>
+    <string name="tur">TRY</string>
+
+    <!-- PurseContract Nombres de tipos de monedero -->
+    <string name="type_cash">Efectivo</string>
+    <string name="type_bank">Banco</string>
+
+    <!-- EditorActivity Titulos -->
+    <string name="editor_activity_title_new">Nuevo monedero</string>
+    <string name="editor_activity_title_edit">Editar monedero</string>
+
+    <!-- EditorActivity Campos editables -->
+    <string name="purse_overview">Resumen</string>
+    <string name="purse_type">Tipo</string>
+    <string name="purse_currency">Moneda</string>
+    <string name="hint_purse_name">Nombre del monedero</string>
+    <string name="hint_purse_total">Saldo inicial</string>
+
+    <!-- EditorActivity Pop-up dialogs -->
+    <string name="unsaved_changes_dialog">Los cambios no se han guardado. ¿Seguro que quieres salir?</string>
+    <string name="discard">Descartar</string>
+    <string name="keep_editing">Seguir editando</string>
+    <string name="delete_dialog">Se borrará el monedero.</string>
+    <string name="delete">Eliminar</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- EditorActivity Toast messages -->
+    <string name="editor_delete_purse_successful">Se ha eliminado el monedero</string>
+    <string name="editor_delete_purse_failed">Error al eliminar el monedero</string>
+    <string name="editor_saved">Datos guardados</string>
+    <string name="editor_not_saved">Error al guardar</string>
+    <string name="missing_data">Faltan datos por rellenar</string>
+
+    <!-- HistoryActivity -->
+    <string name="history_overview">Dinero disponible</string>
+    <string name="empty_transactions">No hay operaciones</string>
+
+    <!-- TransactionActivity layout -->
+    <string name="transaction_concept">Concepto</string>
+    <string name="transaction_date">Fecha</string>
+    <string name="transaction_time">Hora</string>
+    <string name="transaction_place">Lugar</string>
+    <string name="transaction_amount">Cantidad</string>
+    <string name="add_receipt">Añadir recibo</string>
+
+    <!-- TransactionActivity titulos -->
+    <string name="transaction_activity_title">Nueva operación</string>
+    <string name="transaction_delete_successful">Se ha eliminado la operación</string>
+    <string name="transaction_delete_failed">Error al eliminar la operación</string>
+
+</resources>
