@@ -2,7 +2,6 @@ package com.example.laura.mymoney;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -11,7 +10,6 @@ import android.icu.util.Calendar;
 import android.icu.util.GregorianCalendar;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +23,7 @@ import android.widget.TextView;
 import com.example.laura.mymoney.adapters.TransactionCursorAdapter;
 import com.example.laura.mymoney.data.PurseContract.PurseEntry;
 import com.example.laura.mymoney.data.TransactionContract.TransactionEntry;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.Date;
 
@@ -52,13 +51,15 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("HistoryActivity", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        // Get info from the intent that started the editor
+        // Get info from the intent that started the history
         Intent intent = getIntent();
         mPurseUri = intent.getData();
         mPurseId = (int) ContentUris.parseId(mPurseUri);
+        Log.i("HistoryActivity", "id: " + mPurseId);
 
         // Find all relevant views that we will need to read user input from
         mTotalTextView = (TextView) findViewById(R.id.history_overview_textview);
@@ -79,9 +80,20 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
         View emptyView = findViewById(R.id.empty_transactions);
         listView.setEmptyView(emptyView);
 
-        // Setup FAB to open EditorActivity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_history);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // Floating action buttons
+        FloatingActionButton incomeFab = (FloatingActionButton) findViewById(R.id.fab_income);
+        incomeFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HistoryActivity.this, TransactionActivity.class);
+                intent.putExtra("PURSE_ID", mPurseId);
+                intent.putExtra("TYPE", TransactionEntry.TYPE_POSITIVE);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton expenseFab = (FloatingActionButton) findViewById(R.id.fab_expense);
+        expenseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HistoryActivity.this, TransactionActivity.class);
@@ -91,7 +103,7 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
-        // Set up item click
+        // TODO: Set up item click
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -134,10 +146,6 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
                 getLoaderManager().restartLoader(TRANSACTION_LOADER_ID, null, HistoryActivity.this);
             }
         });
-
-        //insert();
-
-        Log.i("HistoryActivity", "onCreate");
 
         // Prepare the cursor loader.  Either re-connect with an existing one,
         // or start a new one.
@@ -234,18 +242,4 @@ public class HistoryActivity extends AppCompatActivity implements LoaderManager.
         }
     }
 
-    private void insert() {
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(TransactionEntry.COLUMN_CONCEPT, "Queso");
-        values.put(TransactionEntry.COLUMN_DATE, 1502090898);
-        values.put(TransactionEntry.COLUMN_AMOUNT, 697);
-        values.put(TransactionEntry.COLUMN_TYPE, TransactionEntry.TYPE_NEGATIVE);
-        values.put(TransactionEntry.COLUMN_PURSE, 1);
-        values.put(TransactionEntry.COLUMN_TOTAL, 154689);
-        values.put(TransactionEntry.COLUMN_CURRENCY, "EUR");
-
-        // Insert the new row, returning the primary key value of the new row
-        Uri newUri = getContentResolver().insert(TransactionEntry.CONTENT_URI, values);
-    }
 }

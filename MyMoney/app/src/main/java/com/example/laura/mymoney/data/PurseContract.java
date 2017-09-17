@@ -51,7 +51,7 @@ public final class PurseContract {
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PURSES;
 
         public static String formatTotal (int total) {
-            DecimalFormat formatter = new DecimalFormat("#.00");
+            DecimalFormat formatter = new DecimalFormat("#0.00");
             return formatter.format((float)total / 100);
         }
 

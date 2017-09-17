@@ -1,11 +1,13 @@
 package com.example.laura.mymoney.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.laura.mymoney.R;
@@ -56,11 +58,13 @@ public class PurseCursorAdapter extends CursorAdapter {
         // Find fields to populate in inflated template
         TextView nameView = (TextView) view.findViewById(R.id.purse_name);
         TextView totalView = (TextView) view.findViewById(R.id.purse_total);
+        ImageView starImage = (ImageView) view.findViewById(R.id.star);
 
         // Extract properties from cursor
         String name = cursor.getString(cursor.getColumnIndexOrThrow(PurseEntry.COLUMN_NAME));
         int totalNum = cursor.getInt(cursor.getColumnIndexOrThrow(PurseEntry.COLUMN_TOTAL));
         int currency = cursor.getInt(cursor.getColumnIndexOrThrow(PurseEntry.COLUMN_CURRENCY));
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow(PurseEntry._ID));
 
         // Format currency
         String totalText = PurseEntry.formatTotal(totalNum);
@@ -69,6 +73,16 @@ public class PurseCursorAdapter extends CursorAdapter {
         // Populate fields with extracted properties
         nameView.setText(name);
         totalView.setText(totalText);
+
+        // Manage stars
+        SharedPreferences sharedPreferences = context.getSharedPreferences(
+                context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        int defaultPurse = sharedPreferences.getInt(context.getString(R.string.default_purse_preferences), 1);
+        if (id == defaultPurse) {
+            starImage.setVisibility(View.VISIBLE);
+        } else {
+            starImage.setVisibility(View.GONE);
+        }
     }
 
 }

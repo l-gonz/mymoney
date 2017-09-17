@@ -2,12 +2,12 @@ package com.example.laura.mymoney;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Set the adapter on the {@link GridView}
         // so the list can be populated in the user interface
-        GridView purseGridView = (GridView) findViewById(R.id.grid_view);
+        final GridView purseGridView = (GridView) findViewById(R.id.grid_view);
         mPurseAdapter = new PurseCursorAdapter(this, null);
         purseGridView.setAdapter(mPurseAdapter);
         // Set empty view on the GridView, so that it only shows when the list has 0 items.
@@ -59,6 +59,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 intent.setData(ContentUris.withAppendedId(PurseEntry.CONTENT_URI, id));
                 startActivity(intent);
+            }
+        });
+
+        purseGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                SharedPreferences sharedPreferences = getSharedPreferences(
+                        getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(getString(R.string.default_purse_preferences), (int) id);
+                editor.commit();
+
+                purseGridView.setAdapter(mPurseAdapter);
+                return true;
             }
         });
 
@@ -101,18 +115,5 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // above is about to be closed.  We need to make sure we are no
         // longer using it.
         mPurseAdapter.swapCursor(null);
-    }
-
-    private void insertDummyPurse() {
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(PurseEntry.COLUMN_NAME, "Monedero");
-        values.put(PurseEntry.COLUMN_TOTAL, 3456);
-        values.put(PurseEntry.COLUMN_TYPE, PurseEntry.TYPE_CASH);
-        values.put(PurseEntry.COLUMN_CURRENCY, "EUR");
-
-        // Insert the new row, returning the primary key value of the new row
-        Uri newUri = getContentResolver().insert(PurseEntry.CONTENT_URI, values);
     }
 }
