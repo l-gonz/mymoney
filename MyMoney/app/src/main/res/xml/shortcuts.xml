@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shopping_basket"
+        android:shortcutId="default_expense"
+        android:shortcutLongLabel="@string/shortcut_long_label"
+        android:shortcutShortLabel="@string/shortcut_short_label">
+        <!-- Each one of these intents needs an android:action, even if you don't
+             do anything with it. Otherwise you're in for a crash! -->
+        <intent
+            android:action="android.action"
+            android:targetClass="com.example.laura.mymoney.TransactionActivity"
+            android:targetPackage="com.example.laura.mymoney" >
+            <extra
+                android:name="TYPE"
+                android:value="0" />
+        </intent>
+    </shortcut>
+
+</shortcuts>

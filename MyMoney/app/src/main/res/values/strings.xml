@@ -6,9 +6,15 @@
     <string name="action_delete">Eliminar</string>
     <string name="action_edit">Editar</string>
 
+    <!-- Shortcuts -->
+    <string name="shortcut_short_label">Gastos</string>
+    <string name="shortcut_long_label">Anotar gasto</string>
+
     <!-- MainActivity -->
     <string name="total_money">Total disponible: </string>
     <string name="empty_purses">No hay monederos</string>
+    <string name="default_purse_preferences">default purse</string>
+    <string name="preference_file_key">"com.example.laura.mymoney.PREFERENCE_FILE_KEY"</string>
 
     <!-- PurseContract Nombres de divisas -->
     <string name="eur">EUR</string>
@@ -49,6 +55,8 @@
     <!-- HistoryActivity -->
     <string name="history_overview">Dinero disponible</string>
     <string name="empty_transactions">No hay operaciones</string>
+    <string name="income">Ingreso</string>
+    <string name="expense">Gasto</string>
 
     <!-- TransactionActivity layout -->
     <string name="transaction_concept">Concepto</string>
@@ -57,10 +65,13 @@
     <string name="transaction_place">Lugar</string>
     <string name="transaction_amount">Cantidad</string>
     <string name="add_receipt">Añadir recibo</string>
+    <string name="delete_receipt">Borrar recibo</string>
 
     <!-- TransactionActivity titulos -->
     <string name="transaction_activity_title">Nueva operación</string>
     <string name="transaction_delete_successful">Se ha eliminado la operación</string>
     <string name="transaction_delete_failed">Error al eliminar la operación</string>
+    <string name="photo_delete_successful">Se ha eliminado la imagen</string>
+    <string name="photo_delete_failed">Error al eliminar la imagen</string>
 
 </resources>
